@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import org.codehaus.jackson.annotate.JsonProperty;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.yammer.dropwizard.config.Configuration;
 
 public class ServicesConfiguration extends Configuration
