@@ -2,8 +2,14 @@ var phonecatControllers = angular.module('metricsControllers', ['metricServices'
  
 phonecatControllers.controller('MainCtrl', ['$scope', '$http', 'urlService',
   function ($scope, $http,urlService) {
-     urlService.async().then(function(d){
-        $scope.urls = d;
+  /*
+     urlService.asyncData().then(function(data){
+        $scope.urls = data;
+     });*/
+     $http.get('/metricsview/urls').success(function(data){
+        $scope.urls = data;
      });
+
+
   }]);
  

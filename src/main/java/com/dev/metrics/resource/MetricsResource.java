@@ -8,8 +8,10 @@ import javax.ws.rs.core.MediaType;
 import com.dev.metrics.dao.Metrics;
 import com.yammer.metrics.annotation.Timed;
 
+import java.util.List;
+
 @Path("/metricsview")
-@Produces(MediaType.TEXT_HTML)
+
 public class MetricsResource
 {
 	private final Metrics metrics;
@@ -21,8 +23,17 @@ public class MetricsResource
 
 	@GET
 	@Timed
+    @Produces(MediaType.TEXT_HTML)
 	public MetricsView getMetrics()
 	{
 		return new MetricsView(metrics);
 	}
+
+    @GET
+    @Path("/urls")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<String> metricsUrls(){
+        return metrics.getUrls();
+    }
+
 }
